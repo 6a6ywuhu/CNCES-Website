@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact | Canadian North Coast Electrical Services Ltd.</title>
+<meta name="description" content="Reach Canadian North Coast Electrical Services Ltd. directly — 604 616 1975 or wade@cnce.ca. Serving North Vancouver, West Vancouver and Metro Vancouver.">
+<link rel="icon" href="images/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="logo-link" aria-label="Canadian North Coast Electrical Services Ltd. — Home">
+      <img src="images/logo-400.png" alt="" width="48" height="48" class="logo-img">
+      <span class="logo-text">
+        <span class="logo-text-primary">Canadian North Coast</span>
+        <span class="logo-text-secondary">Electrical Services Ltd.</span>
+      </span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
+    <nav id="primary-nav" class="primary-nav" aria-label="Primary" data-open="false">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li class="has-dropdown" data-open="false">
+          <button class="dropdown-toggle" type="button" aria-expanded="false" aria-controls="services-dropdown">
+            Services
+            <svg class="icon" aria-hidden="true"><use href="images/icons.svg#icon-chevron-down"></use></svg>
+          </button>
+          <ul id="services-dropdown" class="dropdown-menu">
+            <li><a href="energy-storage-bess.html">Energy Storage &amp; BESS Compliance</a></li>
+            <li><a href="fsr-oversight.html">FSR-A Oversight (FSR of Record)</a></li>
+            <li><a href="estate-maintenance.html">North Shore Estate Maintenance</a></li>
+            <li><a href="capacity-audits.html">Electrical System &amp; Capacity Audits</a></li>
+            <li><a href="tenant-improvements.html">Commercial Tenant Improvements</a></li>
+            <li><a href="food-truck-compliance.html">Food Truck &amp; Mobile Vendor Compliance</a></li>
+          </ul>
+        </li>
+        <li><a href="about.html">About</a></li>
+        <li class="current"><a href="contact.html" aria-current="page">Contact</a></li>
+      </ul>
+      <a href="tel:+16046161975" class="btn btn-primary nav-cta">Call 604 616 1975</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="page-hero">
+    <div class="container on-dark">
+      <p class="breadcrumb"><a href="index.html">Home</a> / Contact</p>
+      <span class="eyebrow">Get in Touch</span>
+      <h1>Contact CNCES</h1>
+      <p class="lede">Every engagement starts with the Field Safety Representative of record — call, email, or send project details below.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="contact-grid">
+
+        <div class="contact-card">
+          <h2>Send Project Details</h2>
+          <p class="hint mt-0" id="form-hint">Submitting sends your details directly to Wade — you'll see a confirmation here once it's sent.</p>
+          <form id="contact-form" class="flow" style="margin-top: var(--space-5);" action="https://formspree.io/f/meajnkav" method="POST">
+            <input type="hidden" name="_subject" value="New website inquiry — CNCES">
+            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+            <div class="form-field">
+              <label for="name">Name <span class="required-mark">*</span></label>
+              <input type="text" id="name" name="name" autocomplete="name" required>
+            </div>
+            <div class="form-field">
+              <label for="email">Email <span class="required-mark">*</span></label>
+              <input type="email" id="email" name="email" autocomplete="email" required>
+            </div>
+            <div class="form-field">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" name="phone" autocomplete="tel">
+            </div>
+            <div class="form-field">
+              <label for="service">I'm Interested In</label>
+              <select id="service" name="service">
+                <option value="General Inquiry">General Inquiry</option>
+                <option value="Energy Storage & BESS Compliance">Energy Storage &amp; BESS Compliance</option>
+                <option value="FSR-A Oversight (FSR of Record)">FSR-A Oversight (FSR of Record)</option>
+                <option value="North Shore Estate Maintenance">North Shore Estate Maintenance</option>
+                <option value="Electrical System & Capacity Audits">Electrical System &amp; Capacity Audits</option>
+                <option value="Commercial Tenant Improvements">Commercial Tenant Improvements</option>
+                <option value="Food Truck & Mobile Vendor Compliance">Food Truck &amp; Mobile Vendor Compliance</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="message">Project Details <span class="required-mark">*</span></label>
+              <textarea id="message" name="message" required></textarea>
+            </div>
+            <div id="form-status" role="status" aria-live="polite"></div>
+            <button type="submit" class="btn btn-primary btn-block" id="form-submit">
+              <svg class="icon" aria-hidden="true"><use href="images/icons.svg#icon-mail"></use></svg>
+              Send Message
+            </button>
+          </form>
+        </div>
+
+        <div>
+          <div class="contact-card">
+            <h2>Direct Contact</h2>
+            <div class="contact-method">
+              <div class="icon-tile"><svg class="icon" aria-hidden="true"><use href="images/icons.svg#icon-phone"></use></svg></div>
+              <div>
+                <span class="method-label">Phone</span>
+                <a href="tel:+16046161975">604 616 1975</a>
+              </div>
+            </div>
+            <div class="contact-method">
+              <div class="icon-tile"><svg class="icon" aria-hidden="true"><use href="images/icons.svg#icon-mail"></use></svg></div>
+              <div>
+                <span class="method-label">Email</span>
+                <a href="mailto:wade@cnce.ca">wade@cnce.ca</a>
+              </div>
+            </div>
+            <div class="contact-method">
+              <div class="icon-tile"><svg class="icon" aria-hidden="true"><use href="images/icons.svg#icon-map-pin"></use></svg></div>
+              <div>
+                <span class="method-label">Based In</span>
+                <p style="font-weight:700; color: var(--ink); margin:0;">North Vancouver, BC</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-card" style="margin-top: var(--space-6);">
+            <h3>Service Area</h3>
+            <ul class="service-area-list">
+              <li>North Vancouver</li>
+              <li>West Vancouver</li>
+              <li>Metro Vancouver</li>
+            </ul>
+          </div>
+
+          <div class="contact-card" style="margin-top: var(--space-6);">
+            <h3>Credentials</h3>
+            <ul class="check-list">
+              <li><svg class="icon" aria-hidden="true"><use href="images/icons.svg#icon-check-circle"></use></svg> Red Seal Electrician</li>
+              <li><svg class="icon" aria-hidden="true"><use href="images/icons.svg#icon-check-circle"></use></svg> Class A FSR</li>
+              <li><svg class="icon" aria-hidden="true"><use href="images/icons.svg#icon-check-circle"></use></svg> TSBC LIC-00215004</li>
+              <li><svg class="icon" aria-hidden="true"><use href="images/icons.svg#icon-check-circle"></use></svg> FSR CEL000245955</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <img src="images/logo-400.png" alt="" width="44" height="44">
+      <p class="footer-company">Canadian North Coast Electrical Services Ltd.</p>
+      <p class="footer-tagline">Compliance-certain electrical work for the North Shore &amp; Metro Vancouver.</p>
+      <p class="footer-credentials">TSBC LIC-00215004 &nbsp;|&nbsp; FSR CEL000245955</p>
+    </div>
+    <nav class="footer-nav" aria-label="Services">
+      <h2>Services</h2>
+      <ul>
+        <li><a href="energy-storage-bess.html">Energy Storage &amp; BESS Compliance</a></li>
+        <li><a href="fsr-oversight.html">FSR-A Oversight</a></li>
+        <li><a href="estate-maintenance.html">Estate Maintenance</a></li>
+        <li><a href="capacity-audits.html">Capacity &amp; Compliance Audits</a></li>
+        <li><a href="tenant-improvements.html">Tenant Improvements</a></li>
+        <li><a href="food-truck-compliance.html">Food Truck Compliance</a></li>
+      </ul>
+    </nav>
+    <nav class="footer-nav" aria-label="Company">
+      <h2>Company</h2>
+      <ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="footer-contact">
+      <h2>Contact</h2>
+      <p><a href="tel:+16046161975">604 616 1975</a></p>
+      <p><a href="mailto:wade@cnce.ca">wade@cnce.ca</a></p>
+      <p>North Vancouver, BC<br>Serving the North Shore &amp; Metro Vancouver</p>
+    </div>
+  </div>
+  <div class="footer-bottom container">
+    <p>&copy; 2026 Canadian North Coast Electrical Services Ltd. All rights reserved.</p>
+    <p>Red Seal Electrician &amp; Class A FSR</p>
+  </div>
+</footer>
+<script src="js/main.js"></script>
+</body>
+</html>

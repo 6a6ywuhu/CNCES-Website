@@ -1,0 +1,15 @@
+# macOS
+.DS_Store
+
+# Raw/source assets not needed by the deployed site
+# (optimized copies already live in images/)
+Logos/
+Media/
+Inspo/
+Preview/
+
+# Internal planning documents — contains BC Inc # / CRA BN
+*.pdf
+
+# Local dev server config (not needed by Netlify)
+.claude/
