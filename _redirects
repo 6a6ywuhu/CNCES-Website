@@ -1,16 +1,7 @@
 # Domain-level redirect: canadiannorthcoastelectricalservicesltd.ca -> cnce.ca
 #
-# Currently DISABLED (commented out below). This domain's DNS already points
-# at this Netlify site as a duplicate alias, so uncommenting these two lines
-# is all that's needed to turn it into a proper redirect instead.
-#
-# Do NOT uncomment until cnce.ca itself is live on this site (i.e. after the
-# cnce.ca DNS cutover in the hosting plan has happened) — until then, cnce.ca
-# still shows NamesPro's placeholder page, and this redirect would send
-# visitors there instead of the real site.
-#
-# To activate: remove the leading "# " from the two lines below, commit, and
-# push — Netlify will pick it up on the next deploy.
+# Activated 2026-08-20 — cnce.ca is now live on this host, so this domain no
+# longer needs to serve a duplicate copy of the site.
 
-# https://canadiannorthcoastelectricalservicesltd.ca/*      https://cnce.ca/:splat   301!
-# https://www.canadiannorthcoastelectricalservicesltd.ca/*  https://cnce.ca/:splat   301!
+https://canadiannorthcoastelectricalservicesltd.ca/*      https://cnce.ca/:splat   301!
+https://www.canadiannorthcoastelectricalservicesltd.ca/*  https://cnce.ca/:splat   301!
