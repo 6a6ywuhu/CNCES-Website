@@ -589,10 +589,10 @@ a.card-full:hover { text-decoration: none; }
 .form-field textarea:focus { border-color: var(--forest); }
 .required-mark { color: var(--forest-600); }
 
-#form-status { font-size: var(--fs-sm); font-weight: 700; margin-bottom: var(--space-4); display: none; padding: var(--space-3) var(--space-4); border-radius: var(--radius); }
-#form-status.success { display: block; background: var(--forest-100); color: var(--forest-700); }
-#form-status.error { display: block; background: #FBEAE7; color: #A02A20; }
-#form-submit[disabled] { opacity: 0.6; cursor: not-allowed; }
+.form-status { font-size: var(--fs-sm); font-weight: 700; margin-bottom: var(--space-4); display: none; padding: var(--space-3) var(--space-4); border-radius: var(--radius); }
+.form-status.success { display: block; background: var(--forest-100); color: var(--forest-700); }
+.form-status.error { display: block; background: #FBEAE7; color: #A02A20; }
+[data-submit][disabled] { opacity: 0.6; cursor: not-allowed; }
 
 /* ---- About page ---- */
 .credential-panel {
@@ -650,3 +650,33 @@ a.card-full:hover { text-decoration: none; }
   white-space: nowrap;
   border: 0;
 }
+
+/* ---- Strata EPR ---- */
+.feature { display: grid; gap: var(--space-6); align-items: center; }
+@media (min-width: 860px) { .feature { grid-template-columns: 1.5fr 1fr; gap: var(--space-8); } }
+
+.deadline-grid { display: grid; gap: var(--space-5); }
+@media (min-width: 700px) { .deadline-grid { grid-template-columns: repeat(2, 1fr); } }
+
+.deadline {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.deadline-label { font-size: var(--fs-xs); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted-text); }
+.deadline-date { font-size: var(--fs-2xl); font-weight: 700; line-height: 1.1; color: var(--forest); font-variant-numeric: tabular-nums; }
+.deadline-note { font-size: var(--fs-sm); color: var(--body-text); }
+.deadline.urgent { background: var(--forest); border-color: var(--forest); }
+.deadline.urgent .deadline-label { color: #B9CFC0; }
+.deadline.urgent .deadline-date { color: var(--white); }
+.deadline.urgent .deadline-note { color: #D8E7DD; }
+
+.source-list { font-size: var(--fs-xs); color: var(--muted-text); }
+.source-list a { color: var(--forest); text-decoration: underline; }
+.source-list li { margin-bottom: var(--space-2); }
+
+section[id] { scroll-margin-top: calc(var(--header-h) + 16px); }

@@ -67,13 +67,13 @@
     }
   });
 
-  var contactForm = document.getElementById("contact-form");
-  if (contactForm) {
-    var submitBtn = document.getElementById("form-submit");
-    var statusBox = document.getElementById("form-status");
+  document.querySelectorAll("form[data-ajax-form]").forEach(function (form) {
+    var submitBtn = form.querySelector("[data-submit]");
+    var statusBox = form.querySelector(".form-status");
     var submitBtnDefaultHTML = submitBtn ? submitBtn.innerHTML : "";
+    var successMsg = form.getAttribute("data-success") || "Thanks — your message has been sent. Wade will be in touch shortly.";
 
-    contactForm.addEventListener("submit", function (e) {
+    form.addEventListener("submit", function (e) {
       e.preventDefault();
 
       if (submitBtn) {
@@ -81,34 +81,26 @@
         submitBtn.textContent = "Sending…";
       }
       if (statusBox) {
-        statusBox.className = "";
+        statusBox.className = "form-status";
         statusBox.textContent = "";
       }
 
-      fetch(contactForm.action, {
+      fetch(form.action, {
         method: "POST",
-        body: new FormData(contactForm),
+        body: new FormData(form),
         headers: { Accept: "application/json" }
       })
         .then(function (response) {
-          if (response.ok) {
-            if (statusBox) {
-              statusBox.className = "success";
-              statusBox.textContent = "Thanks — your project details have been sent. Wade will be in touch shortly.";
-            }
-            contactForm.reset();
-          } else {
-            return response.json().then(function (data) {
-              var errorMsg = (data && data.errors && data.errors.length)
-                ? data.errors.map(function (er) { return er.message; }).join(", ")
-                : "Something went wrong sending your message.";
-              throw new Error(errorMsg);
-            });
+          if (!response.ok) throw new Error("Request failed");
+          if (statusBox) {
+            statusBox.className = "form-status success";
+            statusBox.textContent = successMsg;
           }
+          form.reset();
         })
         .catch(function () {
           if (statusBox) {
-            statusBox.className = "error";
+            statusBox.className = "form-status error";
             statusBox.textContent = "Something went wrong sending your message. Please call 604 616 1975 or email wade@cnce.ca directly.";
           }
         })
@@ -119,7 +111,7 @@
           }
         });
     });
-  }
+  });
 
   // Close mobile menu when a nav link (not a dropdown toggle) is activated
   if (nav) {

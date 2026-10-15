@@ -29,18 +29,19 @@
     <nav id="primary-nav" class="primary-nav" aria-label="Primary" data-open="false">
       <ul>
         <li><a href="index.html">Home</a></li>
+        <li><a href="strata-epr.html">Strata EPR</a></li>
         <li class="has-dropdown" data-open="false">
           <button class="dropdown-toggle" type="button" aria-expanded="false" aria-controls="services-dropdown">
             Services
             <svg class="icon" aria-hidden="true"><use href="images/icons.svg#icon-chevron-down"></use></svg>
           </button>
           <ul id="services-dropdown" class="dropdown-menu">
+            <li><a href="strata-epr.html">Strata Electrical Planning Reports</a></li>
             <li><a href="energy-storage-bess.html">Energy Storage &amp; BESS Compliance</a></li>
             <li><a href="fsr-oversight.html">FSR-A Oversight (FSR of Record)</a></li>
             <li><a href="estate-maintenance.html">North Shore Estate Maintenance</a></li>
             <li><a href="capacity-audits.html">Electrical System &amp; Capacity Audits</a></li>
             <li><a href="tenant-improvements.html">Commercial Tenant Improvements</a></li>
-            <li><a href="food-truck-compliance.html">Food Truck &amp; Mobile Vendor Compliance</a></li>
           </ul>
         </li>
         <li><a href="about.html">About</a></li>
@@ -69,7 +70,7 @@
         <div class="contact-card">
           <h2>Send Project Details</h2>
           <p class="hint mt-0" id="form-hint">Submitting sends your details directly to Wade — you'll see a confirmation here once it's sent.</p>
-          <form id="contact-form" class="flow" style="margin-top: var(--space-5);" action="https://formspree.io/f/meajnkav" method="POST">
+          <form id="contact-form" data-ajax-form data-success="Thanks — your project details have been sent. Wade will be in touch shortly." class="flow" style="margin-top: var(--space-5);" action="https://formspree.io/f/meajnkav" method="POST">
             <input type="hidden" name="_subject" value="New website inquiry — CNCES">
             <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
             <div class="form-field">
@@ -88,20 +89,20 @@
               <label for="service">I'm Interested In</label>
               <select id="service" name="service">
                 <option value="General Inquiry">General Inquiry</option>
+                <option value="Strata Electrical Planning Report (EPR)">Strata Electrical Planning Report (EPR)</option>
                 <option value="Energy Storage & BESS Compliance">Energy Storage &amp; BESS Compliance</option>
                 <option value="FSR-A Oversight (FSR of Record)">FSR-A Oversight (FSR of Record)</option>
                 <option value="North Shore Estate Maintenance">North Shore Estate Maintenance</option>
                 <option value="Electrical System & Capacity Audits">Electrical System &amp; Capacity Audits</option>
                 <option value="Commercial Tenant Improvements">Commercial Tenant Improvements</option>
-                <option value="Food Truck & Mobile Vendor Compliance">Food Truck &amp; Mobile Vendor Compliance</option>
               </select>
             </div>
             <div class="form-field">
               <label for="message">Project Details <span class="required-mark">*</span></label>
               <textarea id="message" name="message" required></textarea>
             </div>
-            <div id="form-status" role="status" aria-live="polite"></div>
-            <button type="submit" class="btn btn-primary btn-block" id="form-submit">
+            <div class="form-status" role="status" aria-live="polite"></div>
+            <button type="submit" class="btn btn-primary btn-block" data-submit>
               <svg class="icon" aria-hidden="true"><use href="images/icons.svg#icon-mail"></use></svg>
               Send Message
             </button>
@@ -171,12 +172,12 @@
     <nav class="footer-nav" aria-label="Services">
       <h2>Services</h2>
       <ul>
+        <li><a href="strata-epr.html">Strata Electrical Planning Reports</a></li>
         <li><a href="energy-storage-bess.html">Energy Storage &amp; BESS Compliance</a></li>
         <li><a href="fsr-oversight.html">FSR-A Oversight</a></li>
         <li><a href="estate-maintenance.html">Estate Maintenance</a></li>
         <li><a href="capacity-audits.html">Capacity &amp; Compliance Audits</a></li>
         <li><a href="tenant-improvements.html">Tenant Improvements</a></li>
-        <li><a href="food-truck-compliance.html">Food Truck Compliance</a></li>
       </ul>
     </nav>
     <nav class="footer-nav" aria-label="Company">
