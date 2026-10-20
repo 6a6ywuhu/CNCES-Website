@@ -67,6 +67,14 @@
     }
   });
 
+  var serviceSelect = document.getElementById("service");
+  var wanted = new URLSearchParams(window.location.search).get("service");
+  if (serviceSelect && wanted) {
+    Array.prototype.forEach.call(serviceSelect.options, function (o) {
+      if (o.value === wanted) serviceSelect.value = wanted;
+    });
+  }
+
   document.querySelectorAll("form[data-ajax-form]").forEach(function (form) {
     var submitBtn = form.querySelector("[data-submit]");
     var statusBox = form.querySelector(".form-status");
@@ -127,4 +135,39 @@
       });
     });
   }
+})();
+
+// Reveal buttons: show a hidden panel (e.g. the EPR request form) on click or when its anchor is linked
+(function () {
+  "use strict";
+
+  document.querySelectorAll("[data-reveal]").forEach(function (btn) {
+    var panel = document.getElementById(btn.getAttribute("aria-controls"));
+    if (!panel) return;
+    var section = btn.closest("section[id]");
+
+    function setOpen(open) {
+      btn.setAttribute("aria-expanded", open ? "true" : "false");
+      panel.hidden = !open;
+    }
+    function openFromHash() {
+      if (section && window.location.hash === "#" + section.id) {
+        setOpen(true);
+        var first = panel.querySelector("input:not([type=hidden]):not([name=_gotcha])");
+        if (first) first.focus({ preventScroll: true });
+      }
+    }
+
+    btn.addEventListener("click", function () {
+      setOpen(panel.hidden);
+    });
+    window.addEventListener("hashchange", openFromHash);
+    document.querySelectorAll('a[href="#' + (section ? section.id : "") + '"]').forEach(function (a) {
+      a.addEventListener("click", function () {
+        setOpen(true);
+        setTimeout(openFromHash, 0);
+      });
+    });
+    openFromHash();
+  });
 })();

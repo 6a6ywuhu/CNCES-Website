@@ -5,3 +5,8 @@
 
 https://canadiannorthcoastelectricalservicesltd.ca/*      https://cnce.ca/:splat   301!
 https://www.canadiannorthcoastelectricalservicesltd.ca/*  https://cnce.ca/:splat   301!
+
+# Old page paths -> current pages
+/capacity-audits.html      /assessments.html     301
+/estate-maintenance.html   /homes-estates.html   301
+/food-truck-compliance.html  /                   301

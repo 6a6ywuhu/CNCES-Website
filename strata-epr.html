@@ -36,11 +36,11 @@
             <svg class="icon" aria-hidden="true"><use href="images/icons.svg#icon-chevron-down"></use></svg>
           </button>
           <ul id="services-dropdown" class="dropdown-menu">
-            <li class="current"><a href="strata-epr.html" aria-current="page">Strata Electrical Planning Reports</a></li>
+            <li><a href="assessments.html">Assessments &amp; Planning Reports</a></li>
+            <li><a href="ev-charging.html">EV Charging</a></li>
+            <li><a href="homes-estates.html">Homes &amp; Estates</a></li>
             <li><a href="energy-storage-bess.html">Energy Storage &amp; BESS Compliance</a></li>
-            <li><a href="fsr-oversight.html">FSR-A Oversight (FSR of Record)</a></li>
-            <li><a href="estate-maintenance.html">North Shore Estate Maintenance</a></li>
-            <li><a href="capacity-audits.html">Electrical System &amp; Capacity Audits</a></li>
+            <li><a href="fsr-oversight.html">FSR Oversight (FSR of Record)</a></li>
             <li><a href="tenant-improvements.html">Commercial Tenant Improvements</a></li>
           </ul>
         </li>
@@ -56,7 +56,7 @@
 
   <section class="page-hero">
     <div class="container on-dark">
-      <p class="breadcrumb"><a href="index.html">Home</a> / <a href="index.html#services">Services</a> / Strata Electrical Planning Reports</p>
+      <p class="breadcrumb"><a href="index.html">Home</a> / <a href="assessments.html">Assessments &amp; Planning Reports</a> / Strata EPR</p>
       <span class="eyebrow">For Strata Councils &amp; Property Managers</span>
       <h1>Strata Electrical Planning Reports for Townhouse and Low-Rise Stratas</h1>
       <p class="lede">Stratas with five or more lots in Metro Vancouver, the Fraser Valley or the Capital Regional District (excluding islands reachable only by air or boat) must obtain an Electrical Planning Report (EPR) by December 31, 2026. CNCES prepares EPRs for townhouse and low-rise stratas.</p>
@@ -89,8 +89,8 @@
           <span class="deadline-note">Stratas with five or more lots in other areas of British Columbia, including Bowen Island and the Southern Gulf Islands.</span>
         </div>
       </div>
-      <p style="margin-top: var(--space-5);">New strata corporations have five years from the deposit of the strata plan to obtain an EPR.</p>
-      <p class="source-list" style="margin-top: var(--space-3);">Sources: B.C. Reg. 261/2023; Province of BC, Strata electrical planning report.</p>
+      <p class="mt-5">New strata corporations have five years from the deposit of the strata plan to obtain an EPR.</p>
+      <p class="source-list mt-3">Sources: <a href="https://free.bcpublications.ca/civix/document/id/lc/bcgaz2/v66n21_261-2023">B.C. Reg. 261/2023</a>; <a href="https://www2.gov.bc.ca/gov/content/housing-tenancy/strata-housing/operating-a-strata/the-environment/electrical-planning-report">Province of BC, Strata electrical planning report</a>.</p>
     </div>
   </section>
 
@@ -110,7 +110,8 @@
             <li><svg class="icon" aria-hidden="true"><use href="images/icons.svg#icon-check-circle"></use></svg> An estimate of the capacity needed for future demands, such as EV charging and heat pumps</li>
             <li><svg class="icon" aria-hidden="true"><use href="images/icons.svg#icon-check-circle"></use></svg> Recommendations for managing and reducing demand</li>
           </ul>
-          <p class="note-box">An EPR is an overview of capacity and future demand. It is not a detailed analysis and can't be used to select or install new equipment.</p>
+          <p class="note-box">An EPR is an overview of capacity and future demand. It is not a detailed analysis and can't be used to select or install new equipment. For a deeper look, see our <a href="assessments.html#studies">load &amp; capacity study</a>.</p>
+          <p>Once your strata has its EPR, owners can request EV charging. <a href="ev-charging.html#stratas">See EV charging for stratas</a>.</p>
         </div>
       </div>
     </div>
@@ -119,7 +120,7 @@
   <section class="section">
     <div class="container">
       <div class="grid grid-2">
-        <div class="proof-band">
+        <div class="proof-band stacked">
           <div class="icon-tile"><svg class="icon" aria-hidden="true"><use href="images/icons.svg#icon-building"></use></svg></div>
           <div>
             <h3>Townhouse and low-rise stratas</h3>
@@ -127,7 +128,7 @@
             <p>Not sure whether your buildings are Part 9? Your local government can confirm, or send us the details below.</p>
           </div>
         </div>
-        <div class="proof-band">
+        <div class="proof-band stacked">
           <div class="icon-tile"><svg class="icon" aria-hidden="true"><use href="images/icons.svg#icon-file-text"></use></svg></div>
           <div>
             <h3>Requesting quotes</h3>
@@ -144,8 +145,13 @@
       <div class="contact-grid">
         <div class="contact-card">
           <h2>Request an EPR quote</h2>
-          <p class="hint mt-0">Tell us about your strata and Wade will be in touch. Your request goes directly to Wade.</p>
-          <form id="epr-form" data-ajax-form data-success="Thanks — your EPR request has been sent. Wade will be in touch shortly." class="flow" style="margin-top: var(--space-5);" action="https://formspree.io/f/meajnkav" method="POST">
+          <p class="hint">Tell us about your strata and Wade will be in touch. Your request goes directly to Wade.</p>
+          <button type="button" class="btn btn-primary btn-block reveal-btn mt-5" data-reveal aria-expanded="false" aria-controls="epr-panel">
+            Start your EPR request
+            <svg class="icon" aria-hidden="true"><use href="images/icons.svg#icon-chevron-down"></use></svg>
+          </button>
+          <div id="epr-panel" class="reveal-panel" hidden>
+          <form id="epr-form" data-ajax-form data-success="Thanks — your EPR request has been sent. Wade will be in touch shortly." class="flow" action="https://formspree.io/f/meajnkav" method="POST">
             <input type="hidden" name="_subject" value="New Strata EPR request — CNCES">
             <input type="hidden" name="service" value="Strata Electrical Planning Report (EPR)">
             <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
@@ -160,15 +166,6 @@
             <div class="form-field">
               <label for="epr-phone">Phone</label>
               <input type="tel" id="epr-phone" name="phone" autocomplete="tel">
-            </div>
-            <div class="form-field">
-              <label for="epr-role">Your role</label>
-              <select id="epr-role" name="role">
-                <option value="Strata council member">Strata council member</option>
-                <option value="Strata manager">Strata manager</option>
-                <option value="Owner">Owner</option>
-                <option value="Other">Other</option>
-              </select>
             </div>
             <div class="form-field">
               <label for="epr-strata">Strata name and plan number <span class="required-mark">*</span></label>
@@ -202,6 +199,7 @@
               Send EPR Request
             </button>
           </form>
+          </div>
         </div>
 
         <div>
@@ -221,14 +219,6 @@
                 <a href="mailto:wade@cnce.ca?subject=EPR%20quote%20request">wade@cnce.ca</a>
               </div>
             </div>
-          </div>
-          <div class="contact-card" style="margin-top: var(--space-6);">
-            <h3>Sources</h3>
-            <ul class="source-list" style="margin-top: var(--space-3);">
-              <li><a href="https://www2.gov.bc.ca/gov/content/housing-tenancy/strata-housing/operating-a-strata/the-environment/electrical-planning-report">Province of BC: Strata electrical planning report</a></li>
-              <li><a href="https://www2.gov.bc.ca/assets/gov/housing-and-tenancy/strata-housing/guidance-preparing-strata-eprs-may-2026.pdf">Guidance for the Preparation of Electrical Planning Reports for Strata Corporations in B.C. (May 2026)</a></li>
-              <li><a href="https://free.bcpublications.ca/civix/document/id/lc/bcgaz2/v66n21_261-2023">B.C. Reg. 261/2023: Strata Property Regulation amendments</a></li>
-            </ul>
           </div>
         </div>
       </div>
@@ -265,12 +255,12 @@
     <nav class="footer-nav" aria-label="Services">
       <h2>Services</h2>
       <ul>
-        <li><a href="strata-epr.html">Strata Electrical Planning Reports</a></li>
+        <li><a href="assessments.html">Assessments &amp; Planning Reports</a></li>
+        <li><a href="ev-charging.html">EV Charging</a></li>
+        <li><a href="homes-estates.html">Homes &amp; Estates</a></li>
         <li><a href="energy-storage-bess.html">Energy Storage &amp; BESS Compliance</a></li>
-        <li><a href="fsr-oversight.html">FSR-A Oversight</a></li>
-        <li><a href="estate-maintenance.html">Estate Maintenance</a></li>
-        <li><a href="capacity-audits.html">Capacity &amp; Compliance Audits</a></li>
-        <li><a href="tenant-improvements.html">Tenant Improvements</a></li>
+        <li><a href="fsr-oversight.html">FSR Oversight (FSR of Record)</a></li>
+        <li><a href="tenant-improvements.html">Commercial Tenant Improvements</a></li>
       </ul>
     </nav>
     <nav class="footer-nav" aria-label="Company">
@@ -284,7 +274,7 @@
       <h2>Contact</h2>
       <p><a href="tel:+16046161975">604 616 1975</a></p>
       <p><a href="mailto:wade@cnce.ca">wade@cnce.ca</a></p>
-      <p>North Vancouver, BC<br>Serving the North Shore &amp; Metro Vancouver</p>
+      <p>North Vancouver, BC</p>
     </div>
   </div>
   <div class="footer-bottom container">

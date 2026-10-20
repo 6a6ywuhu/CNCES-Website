@@ -13,3 +13,7 @@ Preview/
 
 # Local dev server config (not needed by Netlify)
 .claude/
+
+# Raw photos and archives (optimized copies live in images/)
+Raw Photos/
+Archive.zip
