@@ -432,6 +432,7 @@ select:focus-visible {
   .split { grid-template-columns: 1fr 1fr; }
   .split.media-right .split-media { order: 2; }
 }
+.split.no-media { display: block; max-width: 760px; }
 .split-media img { border-radius: var(--radius); width: 100%; height: 100%; object-fit: cover; aspect-ratio: 4/3; }
 
 /* ---- Gate note (internal-safe disclosure, used sparingly) ---- */
