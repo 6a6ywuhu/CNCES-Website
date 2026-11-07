@@ -105,6 +105,7 @@
             statusBox.textContent = successMsg;
           }
           form.reset();
+          if (window.cnceTrack) window.cnceTrack("generate_lead", { form_id: form.id });
         })
         .catch(function () {
           if (statusBox) {
@@ -169,5 +170,37 @@
       });
     });
     openFromHash();
+  });
+})();
+
+// Analytics (Google Analytics 4). Tracking stays off until GA_ID is set to the
+// measurement ID, e.g. "G-XXXXXXXXXX". Key events: generate_lead (a form was
+// sent) and phone_click (a phone number was tapped).
+(function () {
+  "use strict";
+
+  var GA_ID = "";
+
+  window.cnceTrack = function () {};
+  if (!GA_ID) return;
+
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { window.dataLayer.push(arguments); }
+  window.gtag = gtag;
+  gtag("js", new Date());
+  gtag("config", GA_ID);
+
+  var tag = document.createElement("script");
+  tag.async = true;
+  tag.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(GA_ID);
+  document.head.appendChild(tag);
+
+  window.cnceTrack = function (name, params) {
+    gtag("event", name, params || {});
+  };
+
+  document.addEventListener("click", function (e) {
+    var link = e.target.closest && e.target.closest('a[href^="tel:"]');
+    if (link) window.cnceTrack("phone_click", { link_url: link.getAttribute("href") });
   });
 })();
