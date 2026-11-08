@@ -173,30 +173,18 @@
   });
 })();
 
-// Analytics (Google Analytics 4). Tracking stays off until GA_ID is set to the
-// measurement ID, e.g. "G-XXXXXXXXXX". Key events: generate_lead (a form was
-// sent) and phone_click (a phone number was tapped).
+// Analytics: Google Tag Manager is installed in each page's head. These events go to its dataLayer:
+// generate_lead (a form was sent) and phone_click (a phone number was tapped). In Tag Manager, a Custom
+// Event trigger for each name sends it to Google Analytics.
 (function () {
   "use strict";
 
-  var GA_ID = "";
-
-  window.cnceTrack = function () {};
-  if (!GA_ID) return;
-
   window.dataLayer = window.dataLayer || [];
-  function gtag() { window.dataLayer.push(arguments); }
-  window.gtag = gtag;
-  gtag("js", new Date());
-  gtag("config", GA_ID);
-
-  var tag = document.createElement("script");
-  tag.async = true;
-  tag.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(GA_ID);
-  document.head.appendChild(tag);
 
   window.cnceTrack = function (name, params) {
-    gtag("event", name, params || {});
+    var data = { event: name };
+    if (params) for (var k in params) data[k] = params[k];
+    window.dataLayer.push(data);
   };
 
   document.addEventListener("click", function (e) {
