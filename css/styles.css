@@ -458,6 +458,7 @@ select:focus-visible {
 /* ---- Contact page ---- */
 .contact-grid { display: grid; gap: var(--space-7); }
 @media (min-width: 860px) { .contact-grid { grid-template-columns: 1.1fr 0.9fr; } }
+.contact-grid > .contact-card { align-self: start; }
 .contact-card {
   background: var(--white);
   border: 1px solid var(--border);
@@ -486,31 +487,6 @@ select:focus-visible {
 }
 
 /* ---- Form ---- */
-.form-field { margin-bottom: var(--space-5); }
-.form-field label { display: block; font-weight: 700; font-size: var(--fs-sm); margin-bottom: var(--space-2); color: var(--ink); }
-.form-field .hint { font-size: var(--fs-xs); color: var(--muted-text); margin-top: var(--space-1); }
-.form-field input,
-.form-field select,
-.form-field textarea {
-  width: 100%;
-  min-height: 48px;
-  padding: 0.75rem 1rem;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  font-family: var(--font-sans);
-  font-size: var(--fs-base);
-  color: var(--ink);
-  background: var(--white);
-}
-.form-field textarea { min-height: 130px; resize: vertical; }
-.form-field input:focus,
-.form-field select:focus,
-.form-field textarea:focus { border-color: var(--forest); }
-.required-mark { color: var(--forest-600); }
-
-.form-status { font-size: var(--fs-sm); font-weight: 700; margin-bottom: var(--space-4); display: none; padding: var(--space-3) var(--space-4); border-radius: var(--radius); }
-.form-status.success { display: block; background: var(--forest-100); color: var(--forest-700); }
-.form-status.error { display: block; background: #FBEAE7; color: #A02A20; }
 [data-submit][disabled] { opacity: 0.6; cursor: not-allowed; }
 
 /* ---- About page ---- */
@@ -746,7 +722,3 @@ section[id] { scroll-margin-top: calc(var(--header-h) + 16px); }
 .rebate-link .icon { width: 1rem; height: 1rem; }
 
 /* ---- Reveal button + panel (EPR request form) ---- */
-.reveal-btn .icon { transition: transform 180ms ease; }
-.reveal-btn[aria-expanded="true"] .icon { transform: rotate(180deg); }
-.reveal-panel { margin-top: var(--space-5); }
-@media (prefers-reduced-motion: reduce) { .reveal-btn .icon { transition: none; } }

@@ -105,7 +105,7 @@
       <h1>Strata electrical planning reports for townhouse and low-rise stratas</h1>
       <p class="lede">Stratas with five or more lots in Metro Vancouver, the Fraser Valley or the Capital Regional District (excluding islands reachable only by air or boat) must obtain an Electrical Planning Report (EPR) by December 31, 2026. CNCES prepares EPRs for townhouse and low-rise stratas.</p>
       <div class="hero-actions">
-        <a href="#request" class="btn btn-primary">Request an EPR Quote</a>
+        <a href="#request" class="btn btn-primary" data-jobber="general">Request an EPR Quote</a>
         <a href="tel:+16046161975" class="btn btn-outline">
           <svg class="icon" aria-hidden="true"><use href="images/icons.svg#icon-phone"></use></svg>
           Call 604 616 1975
@@ -175,7 +175,7 @@
           <div>
             <h3>Requesting quotes</h3>
             <p>Councils can request quotes using CHOA's Request for Proposal template for Electrical Planning Reports (Bulletin 400-518).</p>
-            <p>Send your request to <a href="mailto:wade@cnce.ca?subject=EPR%20quote%20request">wade@cnce.ca</a> or call <a href="tel:+16046161975">604 616 1975</a>.</p>
+            <p>Use the <a href="#request">request form</a> or call <a href="tel:+16046161975">604 616 1975</a>.</p>
           </div>
         </div>
         <div class="proof-band stacked">
@@ -202,61 +202,12 @@
       <div class="contact-grid">
         <div class="contact-card">
           <h2>Request an EPR quote</h2>
-          <p class="hint">Tell us about your strata and Wade will be in touch. Your request goes directly to Wade.</p>
-          <button type="button" class="btn btn-primary btn-block reveal-btn mt-5" data-reveal aria-expanded="false" aria-controls="epr-panel">
+          <p class="hint">Tell us about your strata: the plan number, the municipality and the number of lots. The form opens in Jobber, the system CNCES uses to book work, and your request goes straight to Wade.</p>
+          <p class="hint">CNCES prepares EPRs for Part 9 townhouse and low-rise stratas only.</p>
+          <a href="mailto:wade@cnce.ca?subject=EPR%20quote%20request" class="btn btn-primary btn-block mt-5" data-jobber="general">
+            <svg class="icon" aria-hidden="true"><use href="images/icons.svg#icon-file-text"></use></svg>
             Start your EPR request
-            <svg class="icon" aria-hidden="true"><use href="images/icons.svg#icon-chevron-down"></use></svg>
-          </button>
-          <div id="epr-panel" class="reveal-panel" hidden>
-          <form id="epr-form" data-ajax-form data-success="Thanks — your EPR request has been sent. Wade will be in touch shortly." class="flow" action="https://formspree.io/f/meajnkav" method="POST">
-            <input type="hidden" name="_subject" value="New Strata EPR request — CNCES">
-            <input type="hidden" name="service" value="Strata Electrical Planning Report (EPR)">
-            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
-            <div class="form-field">
-              <label for="epr-name">Your name <span class="required-mark">*</span></label>
-              <input type="text" id="epr-name" name="name" autocomplete="name" required>
-            </div>
-            <div class="form-field">
-              <label for="epr-email">Email <span class="required-mark">*</span></label>
-              <input type="email" id="epr-email" name="email" autocomplete="email" required>
-            </div>
-            <div class="form-field">
-              <label for="epr-phone">Phone</label>
-              <input type="tel" id="epr-phone" name="phone" autocomplete="tel">
-            </div>
-            <div class="form-field">
-              <label for="epr-strata">Strata name and plan number <span class="required-mark">*</span></label>
-              <input type="text" id="epr-strata" name="strata_name_and_plan" required>
-            </div>
-            <div class="form-field">
-              <label for="epr-city">City or municipality <span class="required-mark">*</span></label>
-              <input type="text" id="epr-city" name="municipality" autocomplete="address-level2" required>
-            </div>
-            <div class="form-field">
-              <label for="epr-lots">Number of lots <span class="required-mark">*</span></label>
-              <input type="number" id="epr-lots" name="number_of_lots" min="1" inputmode="numeric" required>
-            </div>
-            <div class="form-field">
-              <label for="epr-part9">Is every building three storeys or less and no larger than 600&nbsp;m&sup2; in building area? <span class="required-mark">*</span></label>
-              <select id="epr-part9" name="all_buildings_part_9" required>
-                <option value="" selected disabled>Select one</option>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-                <option value="Not sure">Not sure</option>
-              </select>
-              <p class="hint">CNCES prepares EPRs for Part 9 townhouse and low-rise stratas only.</p>
-            </div>
-            <div class="form-field">
-              <label for="epr-message">Anything else we should know</label>
-              <textarea id="epr-message" name="message"></textarea>
-            </div>
-            <div class="form-status" role="status" aria-live="polite"></div>
-            <button type="submit" class="btn btn-primary btn-block" data-submit>
-              <svg class="icon" aria-hidden="true"><use href="images/icons.svg#icon-mail"></use></svg>
-              Send EPR Request
-            </button>
-          </form>
-          </div>
+          </a>
         </div>
 
         <div>
@@ -267,13 +218,6 @@
               <div>
                 <span class="method-label">Phone</span>
                 <a href="tel:+16046161975">604 616 1975</a>
-              </div>
-            </div>
-            <div class="contact-method">
-              <div class="icon-tile"><svg class="icon" aria-hidden="true"><use href="images/icons.svg#icon-mail"></use></svg></div>
-              <div>
-                <span class="method-label">Email</span>
-                <a href="mailto:wade@cnce.ca?subject=EPR%20quote%20request">wade@cnce.ca</a>
               </div>
             </div>
           </div>
@@ -291,9 +235,9 @@
           <svg class="icon" aria-hidden="true"><use href="images/icons.svg#icon-phone"></use></svg>
           604 616 1975
         </a>
-        <a href="mailto:wade@cnce.ca?subject=EPR%20quote%20request" class="btn btn-primary">
-          <svg class="icon" aria-hidden="true"><use href="images/icons.svg#icon-mail"></use></svg>
-          wade@cnce.ca
+        <a href="#request" class="btn btn-primary" data-jobber="general">
+          <svg class="icon" aria-hidden="true"><use href="images/icons.svg#icon-file-text"></use></svg>
+          Send a request
         </a>
       </div>
     </div>

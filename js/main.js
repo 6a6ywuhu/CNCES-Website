@@ -67,61 +67,6 @@
     }
   });
 
-  var serviceSelect = document.getElementById("service");
-  var wanted = new URLSearchParams(window.location.search).get("service");
-  if (serviceSelect && wanted) {
-    Array.prototype.forEach.call(serviceSelect.options, function (o) {
-      if (o.value === wanted) serviceSelect.value = wanted;
-    });
-  }
-
-  document.querySelectorAll("form[data-ajax-form]").forEach(function (form) {
-    var submitBtn = form.querySelector("[data-submit]");
-    var statusBox = form.querySelector(".form-status");
-    var submitBtnDefaultHTML = submitBtn ? submitBtn.innerHTML : "";
-    var successMsg = form.getAttribute("data-success") || "Thanks — your message has been sent. Wade will be in touch shortly.";
-
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-
-      if (submitBtn) {
-        submitBtn.disabled = true;
-        submitBtn.textContent = "Sending…";
-      }
-      if (statusBox) {
-        statusBox.className = "form-status";
-        statusBox.textContent = "";
-      }
-
-      fetch(form.action, {
-        method: "POST",
-        body: new FormData(form),
-        headers: { Accept: "application/json" }
-      })
-        .then(function (response) {
-          if (!response.ok) throw new Error("Request failed");
-          if (statusBox) {
-            statusBox.className = "form-status success";
-            statusBox.textContent = successMsg;
-          }
-          form.reset();
-          if (window.cnceTrack) window.cnceTrack("generate_lead", { form_id: form.id });
-        })
-        .catch(function () {
-          if (statusBox) {
-            statusBox.className = "form-status error";
-            statusBox.textContent = "Something went wrong sending your message. Please call 604 616 1975 or email wade@cnce.ca directly.";
-          }
-        })
-        .finally(function () {
-          if (submitBtn) {
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = submitBtnDefaultHTML;
-          }
-        });
-    });
-  });
-
   // Close mobile menu when a nav link (not a dropdown toggle) is activated
   if (nav) {
     nav.querySelectorAll("a").forEach(function (link) {
@@ -138,44 +83,67 @@
   }
 })();
 
-// Reveal buttons: show a hidden panel (e.g. the EPR request form) on click or when its anchor is linked
+
+// Jobber request form. Every request button on the site (data-jobber="general") opens this form.
+// Paste the form's link from Jobber: Settings > Requests and Bookings > ... > Share links > Copy link.
+// Until the link is pasted, the buttons keep their fallback link (the email address or the request section).
+// Each link gets a utm_source tag, which Jobber records as the client's lead source:
+//   - "website-<page>" (e.g. website-ev-charging) for a visitor who came to the site any other way;
+//   - the visitor's own utm_source if they arrived on a tagged link, e.g. "google-business-profile" from the
+//     Google profile's website link, kept for the rest of their visit;
+//   - "google-ads" for a visitor who arrived from a Google ad (gclid) without a utm_source.
+// utm_content always carries the page the request was sent from.
 (function () {
   "use strict";
 
-  document.querySelectorAll("[data-reveal]").forEach(function (btn) {
-    var panel = document.getElementById(btn.getAttribute("aria-controls"));
-    if (!panel) return;
-    var section = btn.closest("section[id]");
+  var JOBBER_FORMS = {
+    general: "https://clienthub.getjobber.com/hubs/f93dfcfe-424c-492d-a964-4271c9e2da35/public/requests/2259691/new"
+  };
 
-    function setOpen(open) {
-      btn.setAttribute("aria-expanded", open ? "true" : "false");
-      panel.hidden = !open;
-    }
-    function openFromHash() {
-      if (section && window.location.hash === "#" + section.id) {
-        setOpen(true);
-        var first = panel.querySelector("input:not([type=hidden]):not([name=_gotcha])");
-        if (first) first.focus({ preventScroll: true });
-      }
-    }
+  var KEY = "cnce_landing";
+  var params = new URLSearchParams(window.location.search);
+  var landing = null;
+  var source = params.get("utm_source");
+  if (!source && params.get("gclid")) source = "google-ads";
 
-    btn.addEventListener("click", function () {
-      setOpen(panel.hidden);
+  if (source) {
+    landing = {
+      source: source,
+      medium: params.get("utm_medium") || (params.get("gclid") ? "cpc" : ""),
+      campaign: params.get("utm_campaign") || ""
+    };
+    try { window.sessionStorage.setItem(KEY, JSON.stringify(landing)); } catch (e) { /* storage blocked */ }
+  } else {
+    try { landing = JSON.parse(window.sessionStorage.getItem(KEY) || "null"); } catch (e) { landing = null; }
+  }
+
+  var file = window.location.pathname.split("/").pop().replace(/\.html$/, "");
+  var page = file && file !== "index" ? file : "home";
+
+  document.querySelectorAll("[data-jobber]").forEach(function (link) {
+    var form = link.getAttribute("data-jobber");
+    var base = JOBBER_FORMS[form];
+    if (!base) return;
+    var url;
+    try { url = new URL(base); } catch (e) { return; }
+
+    var leadSource = landing && landing.source ? landing.source : "website-" + page;
+    url.searchParams.set("utm_source", leadSource);
+    url.searchParams.set("utm_medium", landing && landing.medium ? landing.medium : "website");
+    if (landing && landing.campaign) url.searchParams.set("utm_campaign", landing.campaign);
+    url.searchParams.set("utm_content", page);
+    link.href = url.toString();
+
+    link.addEventListener("click", function () {
+      if (window.cnceTrack) window.cnceTrack("request_click", { form: form, lead_source: leadSource, page: page });
     });
-    window.addEventListener("hashchange", openFromHash);
-    document.querySelectorAll('a[href="#' + (section ? section.id : "") + '"]').forEach(function (a) {
-      a.addEventListener("click", function () {
-        setOpen(true);
-        setTimeout(openFromHash, 0);
-      });
-    });
-    openFromHash();
   });
 })();
 
 // Analytics: Google Tag Manager is installed in each page's head. These events go to its dataLayer:
-// generate_lead (a form was sent) and phone_click (a phone number was tapped). In Tag Manager, a Custom
-// Event trigger for each name sends it to Google Analytics.
+// request_click (a request button was clicked; the form itself is sent on Jobber's page, which Tag Manager
+// can't see) and phone_click (a phone number was tapped). In Tag Manager, a Custom Event trigger for each
+// name sends it to Google Analytics.
 (function () {
   "use strict";
 
